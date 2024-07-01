@@ -9,7 +9,7 @@ public class CustomMultiplayerManager : PlayerInputManager
     [SerializeField]
     private List<GameObject> playerPrefabs;
     [SerializeField]
-    private int playerPrefabsIndex = 1;
+    private int playerPrefabsIndex;
     // Start is called before the first frame update
     void Start()
     {

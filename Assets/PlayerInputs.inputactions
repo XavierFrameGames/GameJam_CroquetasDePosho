@@ -6,7 +6,7 @@
             "id": "c0aca292-23c9-4a0a-9e35-dc8364abe96f",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "UI Move",
                     "type": "Value",
                     "id": "82166e3e-d459-4380-81e8-3ef287bccbbd",
                     "expectedControlType": "Vector2",
@@ -15,13 +15,49 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Action",
+                    "name": "UI Submit",
                     "type": "Button",
                     "id": "f99cd309-868a-4a4e-aa64-18aed0392147",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Select Character",
+                    "type": "Button",
+                    "id": "99ea89d9-f30c-48c8-acfa-9b74ec827dfc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UI Cancel",
+                    "type": "Button",
+                    "id": "1c23798f-239a-43ac-bbf8-862c07a806de",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel Character",
+                    "type": "Button",
+                    "id": "3a20a9e5-9f6e-422b-ba74-efb70d67f046",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll Characters",
+                    "type": "Value",
+                    "id": "25eb0f24-cf8a-4b16-a1fc-1216963e342d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -32,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "UI Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -43,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "UI Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -54,7 +90,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "UI Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -65,7 +101,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "UI Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -76,7 +112,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "UI Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -87,7 +123,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "UI Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -98,7 +134,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Action",
+                    "action": "UI Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -109,7 +145,117 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Action",
+                    "action": "UI Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34da4eef-290c-44a7-89a3-88e6279f3e64",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54d3148a-6133-44eb-b382-27b6e4051cb2",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04872a29-73b5-4b56-b0ca-4148eedd0cae",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Characters",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "eee69638-0308-43eb-8c67-0404075d11c3",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Characters",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "62eeddb4-affd-4c8e-b238-8cd819485cfe",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Characters",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a2173dff-6045-4391-be90-cc79e772bc84",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll Characters",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "ac38234d-d109-4cf0-a19d-baab21a4c258",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Character",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "333a767b-f4d5-4fa4-8391-1bdf2e27512c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Character",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb7f0bd3-e17b-4edf-9732-9c7bbd9bd867",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel Character",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ab6f2264-5c31-4dc3-ad25-31a6c7bc3248",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel Character",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
