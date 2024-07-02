@@ -10,21 +10,40 @@ public class CustomMultiplayerManager : PlayerInputManager
     private List<GameObject> playerPrefabs;
     [SerializeField]
     private int playerPrefabsIndex;
+    [SerializeField]
+    private GameObject[] playerPanels;
     // Start is called before the first frame update
     void Start()
     {
+        //JoinPlayer(default, default, default, InputSystem.devices[0]);
+    }
+    
+    public void BeginStart()
+    {
+        Debug.Log("start: " + maxPlayerCount);
         for (int i = 0; i < InputSystem.devices.Count; i++)
         {
             //Debug.Log(InputSystem.devices[i].deviceId);
         }
 
-        JoinPlayer(default, default, default, InputSystem.devices[0]);
+        for (int i = 0; i < playerPanels.Length; i++)
+        {
+            if (i < maxPlayerCount)
+            {
+                playerPanels[i].SetActive(true);
+            }
+            else
+            {
+                playerPanels[i].SetActive(false);
+            }
+        }
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)

@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8b4b021980766ef438585f44aea97c7a
+  - enabled: 1
+    path: Assets/Scenes/TestMultiplayer_Ferran.unity
+    guid: 206002a4c7625204b881d2df2b5f94fb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8076f1f3cc5e3124c836226cd9e79e68,
       type: 2}

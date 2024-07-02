@@ -15,18 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UI Submit",
+                    "name": "Select Character",
                     "type": "Button",
-                    "id": "f99cd309-868a-4a4e-aa64-18aed0392147",
+                    "id": "99ea89d9-f30c-48c8-acfa-9b74ec827dfc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Select Character",
+                    "name": "UI Submit",
                     "type": "Button",
-                    "id": "99ea89d9-f30c-48c8-acfa-9b74ec827dfc",
+                    "id": "0e9ca4ad-bffd-4a11-af87-3496599c74c4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -38,7 +38,7 @@
                     "id": "1c23798f-239a-43ac-bbf8-862c07a806de",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1.5)",
                     "initialStateCheck": false
                 },
                 {
@@ -129,28 +129,6 @@
                 },
                 {
                     "name": "",
-                    "id": "fe58f73d-94a8-4e7a-82d4-17c36c51cfad",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UI Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce82fc7d-b769-4dc1-8795-526d01bd80f6",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "UI Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "34da4eef-290c-44a7-89a3-88e6279f3e64",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -176,7 +154,7 @@
                     "id": "04872a29-73b5-4b56-b0ca-4148eedd0cae",
                     "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "AxisDeadzone(min=1.401298E-45,max=1)",
                     "groups": "",
                     "action": "Scroll Characters",
                     "isComposite": false,
@@ -218,7 +196,7 @@
                 {
                     "name": "",
                     "id": "ac38234d-d109-4cf0-a19d-baab21a4c258",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private SelectCharacterManager selectCharacterManager;
     private PlayerInput input;
 
+    private bool scrolled;
     private void Start()
     {
         input = GetComponent<PlayerInput>();
@@ -38,18 +39,35 @@ public class Player : MonoBehaviour
         
     }
 
+    public void OnDeviceLost(PlayerInput playerInput)
+    {
+        selectCharacterManager.DectivatePlayerPanel(playerIndex);
+    }
+
+    public void OnDeviceReconnected(PlayerInput playerInput)
+    {
+        selectCharacterManager.ActivatePlayerPanel(playerIndex);
+    }
+
     public void ScrollCharacters(InputAction.CallbackContext callback)
     {
         if (callback.performed)
         {
+            
             float value = input.actions["Scroll Characters"].ReadValue<float>();
-            if (value >= 0.9f)
+            if (!scrolled && value >= 0.9f)
             {
                 selectCharacterManager.ChangeCharacterSelected(playerIndex, 1);
+                scrolled = true;
             }
-            else if (value <= -0.9f)
+            else if (!scrolled && value <= -0.9f)
             {
                 selectCharacterManager.ChangeCharacterSelected(playerIndex, -1);
+                scrolled = true;
+            }
+            else if (scrolled && value >= -0.8f && value <= 0.8f)
+            {
+                scrolled = false;
             }
         }
     }
@@ -61,7 +79,7 @@ public class Player : MonoBehaviour
             bool successful = selectCharacterManager.SelectCharacter(playerIndex); //should I get the return value?
             if (successful)
             {
-                DisableActions(new string[] { "Scroll Characters" });
+                DisableActions(new string[] { "Scroll Characters", "Select Character" });
                 EnableActions(new string[] { "Cancel Character" });
             }
         }
@@ -71,7 +89,7 @@ public class Player : MonoBehaviour
     {
         if (callback.performed)
         {
-            EnableActions(new string[] { "Scroll Characters" });
+            EnableActions(new string[] { "Scroll Characters", "Select Character" });
             DisableActions(new string[] { "Cancel Character" });
             selectCharacterManager.DeselectCharacter(playerIndex);
         }
@@ -90,6 +108,15 @@ public class Player : MonoBehaviour
         for (int i = 0; i < actions.Length; i++)
         {
             input.actions[actions[i]].Enable();
+        }
+    }
+
+    public void UICancelHeld(InputAction.CallbackContext callback)
+    {
+        if (callback.performed)
+        {
+            selectCharacterManager.Back();
+            Destroy(gameObject);
         }
     }
 }
