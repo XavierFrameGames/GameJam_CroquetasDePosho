@@ -1,0 +1,114 @@
+{
+    "name": "GameInputs",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "c0aca292-23c9-4a0a-9e35-dc8364abe96f",
+            "actions": [
+                {
+                    "name": "Cooking North",
+                    "type": "Button",
+                    "id": "6bb94957-225c-4a3d-9a89-b68a8ab905b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cooking South",
+                    "type": "Button",
+                    "id": "f5a27439-2e23-4cd9-9811-3faf24e24040",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cooking East",
+                    "type": "Button",
+                    "id": "fca73b0e-8df8-4119-a633-fdc1f01cff7d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cooking West",
+                    "type": "Button",
+                    "id": "df1ff98d-8360-4a9c-b68e-9e21849724c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "b3419d2d-2564-47da-ad20-192a3acd665f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "437c94ea-1252-439c-85f7-3063dafd70a6",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking North",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58762229-ec72-4940-9cd3-13d0e3e3d9c2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking South",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd7006a4-be31-4724-b2eb-fae6a80e9636",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking East",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60236a55-be4a-41bd-8afa-f9917fd1ea74",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking West",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73bd9709-57d3-4d0e-8c1f-5534c6b9115b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
