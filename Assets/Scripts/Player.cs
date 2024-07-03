@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 //[Serializable]
 public class Player : MonoBehaviour
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
     public int playerSkin = -1;
 
     private bool scrolled;
+
+    [SerializeField] private InputDetector inputDetector;
     private void Start()
     {
         input = GetComponent<PlayerInput>();
@@ -154,5 +157,13 @@ public class Player : MonoBehaviour
                 DisableActions(new string[] { "Scroll Characters", "Select Character", "Cancel Character" });
             }
         }
+    }
+
+
+    public void SongInput(InputAction.CallbackContext callback)
+    {
+        //float value = input.actions["Button Up"].ReadValue<float>();
+        //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
+        //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
     }
 }
