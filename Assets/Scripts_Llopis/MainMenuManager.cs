@@ -42,7 +42,21 @@ public class MainMenuManager : MonoBehaviour
         multiplayerManager.transform.parent.gameObject.SetActive(true);
     }
 
-    
+    public void SelectLevel(int level)
+    {
+        if (level == 1) //tutorial
+        {
+            GameManager.Instance.tutorialDone = true;
+        }
+
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
+        {
+            GameManager.Instance.players[i].transform.GetChild(0).gameObject.SetActive(true);
+            //GameManager.Instance.players[i].transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + level);
+    }
 
     public void Exit()
     {

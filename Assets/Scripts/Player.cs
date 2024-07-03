@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     private SelectCharacterManager selectCharacterManager;
     private PlayerInput input;
 
+    //[SerializeField]
+    public int playerSkin = -1;
+
     private bool scrolled;
     private void Start()
     {
@@ -32,6 +35,7 @@ public class Player : MonoBehaviour
             //Debug.Log("no estoy. Ahora si");
             selectCharacterManager.ActivatePlayerPanel(playerIndex);
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -79,6 +83,7 @@ public class Player : MonoBehaviour
             bool successful = selectCharacterManager.SelectCharacter(playerIndex); //should I get the return value?
             if (successful)
             {
+                playerSkin = selectCharacterManager.selectedCharsIndexes[playerIndex];
                 DisableActions(new string[] { "Scroll Characters", "Select Character" });
                 EnableActions(new string[] { "Cancel Character" });
             }
@@ -89,6 +94,7 @@ public class Player : MonoBehaviour
     {
         if (callback.performed)
         {
+            playerSkin = -1;
             EnableActions(new string[] { "Scroll Characters", "Select Character" });
             DisableActions(new string[] { "Cancel Character" });
             selectCharacterManager.DeselectCharacter(playerIndex);
@@ -115,8 +121,38 @@ public class Player : MonoBehaviour
     {
         if (callback.performed)
         {
-            selectCharacterManager.Back();
-            Destroy(gameObject);
+            bool killME = selectCharacterManager.Back();
+            if (killME)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                /*
+                playerSkin = -1;
+                EnableActions(new string[] { "Scroll Characters", "Select Character" });
+                DisableActions(new string[] { "Cancel Character" });
+                */
+            }
+        }
+    }
+
+    public void ResetCharacterSelection()
+    {
+        playerSkin = -1;
+        EnableActions(new string[] { "Scroll Characters", "Select Character" });
+        DisableActions(new string[] { "Cancel Character" });
+    }
+
+    public void StartButton(InputAction.CallbackContext callback)
+    {
+        if (callback.performed)
+        {
+            bool result = selectCharacterManager.PlayerPressedStart(playerIndex);
+            if (result)
+            {
+                DisableActions(new string[] { "Scroll Characters", "Select Character", "Cancel Character" });
+            }
         }
     }
 }

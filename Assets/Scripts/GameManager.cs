@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<Player> players;
+
+    public bool tutorialDone;
     void Awake()
     {
         if (Instance == null)

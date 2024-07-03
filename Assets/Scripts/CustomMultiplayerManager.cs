@@ -12,6 +12,8 @@ public class CustomMultiplayerManager : PlayerInputManager
     private int playerPrefabsIndex;
     [SerializeField]
     private GameObject[] playerPanels;
+    [SerializeField]
+    private Transform[] characterLocations;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,9 +51,21 @@ public class CustomMultiplayerManager : PlayerInputManager
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log("joined player");
+        /*
         playerPrefab = playerPrefabs[playerPrefabsIndex];
         playerPrefabsIndex++;
         playerPrefabsIndex %= playerPrefabs.Count;
+        */
+    }
+
+    public void Meow(PlayerInput playerInput)
+    {
+        Debug.Log("Meow");
+        playerInput.SwitchCurrentActionMap("Game");
+        int character = playerInput.GetComponent<Player>().playerSkin;
+
+        playerInput.transform.position = characterLocations[character].position;
+        playerInput.transform.rotation = characterLocations[character].rotation;
     }
 }
 
