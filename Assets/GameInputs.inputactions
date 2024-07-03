@@ -42,6 +42,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Cooking RightTrigger",
+                    "type": "Button",
+                    "id": "5b037b38-e368-4d8c-8248-c9144c956030",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cooking LeftTrigger",
+                    "type": "Button",
+                    "id": "076a4eb9-2d6f-4f77-96c1-f705675f9b3d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "b3419d2d-2564-47da-ad20-192a3acd665f",
@@ -104,6 +122,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4adbf0c1-8278-4e1b-939d-0904b00f1f62",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking RightTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "614519a5-00d4-4e7e-8b47-f7791c05481b",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking RightTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "578e6dab-34cb-45ba-b920-03d379abd3d8",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking LeftTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8fe8920-6850-45b0-b9de-37b8f68a5e97",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cooking LeftTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
