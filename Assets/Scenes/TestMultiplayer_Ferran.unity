@@ -1372,6 +1372,7 @@ MonoBehaviour:
   - {fileID: 1932211809}
   - {fileID: 675229486}
   - {fileID: 1914709509}
+  characterLocations: []
 --- !u!1 &274008030
 GameObject:
   m_ObjectHideFlags: 0
@@ -3779,6 +3780,7 @@ MonoBehaviour:
   - {fileID: 1932211809}
   - {fileID: 675229486}
   - {fileID: 1914709509}
+  characterLocations: []
 --- !u!1 &1017981793
 GameObject:
   m_ObjectHideFlags: 0
@@ -5437,6 +5439,7 @@ MonoBehaviour:
   - {fileID: 1932211809}
   - {fileID: 675229486}
   - {fileID: 1914709509}
+  characterLocations: []
 --- !u!1 &1448845902
 GameObject:
   m_ObjectHideFlags: 0
@@ -8402,7 +8405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  tutorialDone: 0
+  tutorialDone: 1
 --- !u!4 &2080701397
 Transform:
   m_ObjectHideFlags: 0
