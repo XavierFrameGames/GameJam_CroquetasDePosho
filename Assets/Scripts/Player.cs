@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 //[Serializable]
@@ -19,9 +21,17 @@ public class Player : MonoBehaviour
     private bool scrolled;
 
     [SerializeField] private InputDetector inputDetector;
-    private void Start()
-    {
+
+    public PlayableDirector timelineDirector;
+
+
+
+        private void Start()
+        {
+        
+        timelineDirector = gameObject.transform.GetChild(0).transform.GetComponentInChildren<PlayableDirector>();
         input = GetComponent<PlayerInput>();
+        inputDetector = gameObject.transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<InputDetector>();
         DisableActions(new string[] { "Cancel Character" });
         selectCharacterManager = GameObject.Find("SelectCharacterManager").GetComponent<SelectCharacterManager>();
         if (GameManager.Instance.players.Contains(this))
@@ -160,10 +170,96 @@ public class Player : MonoBehaviour
     }
 
 
-    public void SongInput(InputAction.CallbackContext callback)
+
+    public void SongInputUp(InputAction.CallbackContext callback)
     {
         //float value = input.actions["Button Up"].ReadValue<float>();
         //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
+        float distance = 1000000000000;
+        int posInList = 0;
+        for(int i = 0;i<inputDetector.foodTrans.Count;i++)
+        {
+            float tempdistance = inputDetector.gameObject.transform.position.x - inputDetector.foodTrans[i].transform.position.x;
+            
+            if(tempdistance < distance)
+            {
+                distance = tempdistance;
+                posInList = i;
+            }
+
+            
+
+        }
+        if(distance < 0.1 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput == 1)//mirar si es lo optimo
+        {
+            // inputDetector.foodTrans[posInList]. añadir metodo del objeto para su destruccion en el propio script del objeto;  
+            //Añadir puntuación
+
+        }
+
+
+
+
+    }
+    public void SongInputDown(InputAction.CallbackContext callback)
+    {
+        //float value = input.actions["Button Up"].ReadValue<float>();
+        //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
+        //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
+
+
+
+
+
+
+    }
+    public void SongInputLeft(InputAction.CallbackContext callback)
+    {
+        //float value = input.actions["Button Up"].ReadValue<float>();
+        //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
+        //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
+
+
+
+
+
+
+    }
+    public void SongInputright(InputAction.CallbackContext callback)
+    {
+        //float value = input.actions["Button Up"].ReadValue<float>();
+        //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
+        //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
+
+
+
+
+
+
+    }
+    public void SongInputL(InputAction.CallbackContext callback)
+    {
+        //float value = input.actions["Button Up"].ReadValue<float>();
+        //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
+        //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
+
+
+
+
+
+
+    }
+    public void SongInputR(InputAction.CallbackContext callback)
+    {
+        //float value = input.actions["Button Up"].ReadValue<float>();
+        //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
+        //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
+
+
+
+
+
+
     }
 }

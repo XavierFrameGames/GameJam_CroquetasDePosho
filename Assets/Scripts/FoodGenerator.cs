@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FoodCreation : MonoBehaviour
 {
-    [SerializeField] private int[] numFood;
+  
     [SerializeField] private GameObject[] foodList;
     [SerializeField] private int currentPart;
     [SerializeField] private Transform[] spawnPoint;
@@ -24,7 +24,7 @@ public class FoodCreation : MonoBehaviour
     private void SpawnFood()
     {
         int currentFood = Random.Range(0, currentPart);
-        int spawnPosition = Random.Range(0, 1);
+        int spawnPosition = Random.Range(0, 2);
         GameObject food = Instantiate(foodList[currentFood], spawnPoint[spawnPosition].position, spawnPoint[spawnPosition].rotation, inputDetector.transform);
         
     }

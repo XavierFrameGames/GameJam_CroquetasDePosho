@@ -295,15 +295,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Button Right",
-                    "type": "Button",
-                    "id": "7dbe0071-e31b-4fd1-acc4-b283764aae09",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Button Down",
                     "type": "Button",
                     "id": "748c12b0-79b0-41aa-968f-4e380c3ead7a",
@@ -316,6 +307,15 @@
                     "name": "Button Left",
                     "type": "Button",
                     "id": "8289f810-344c-4334-b001-c088d950ceed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button Right",
+                    "type": "Button",
+                    "id": "7dbe0071-e31b-4fd1-acc4-b283764aae09",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -387,28 +387,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Button Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f9450424-f021-4e39-b649-a8692dfa7371",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Button Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d5273d91-02dd-49f3-888d-7237f11cd7a0",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Button Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -486,6 +464,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "UI Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9450424-f021-4e39-b649-a8692dfa7371",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5273d91-02dd-49f3-888d-7237f11cd7a0",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
