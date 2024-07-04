@@ -25,7 +25,7 @@ public class FoodCreation : MonoBehaviour
     {
         int currentFood = Random.Range(0, currentPart);
         int spawnPosition = Random.Range(0, 2);
-        GameObject food = Instantiate(foodList[currentFood], spawnPoint[spawnPosition].position, spawnPoint[spawnPosition].rotation, inputDetector.transform);
+        GameObject food = Instantiate(foodList[currentFood], spawnPoint[spawnPosition].transform.position, spawnPoint[spawnPosition].rotation, inputDetector.transform);
         
     }
 

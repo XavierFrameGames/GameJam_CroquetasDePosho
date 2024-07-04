@@ -19,8 +19,8 @@ public class FoodBehaviour : MonoBehaviour
     void Update()
     {
         rect.Translate(Vector3.right * speed  * Time.deltaTime);
-        float distanceToCenter = Mathf.Abs(inputDetector.GetComponent<RectTransform>().anchoredPosition.x)  - Mathf.Abs(rect.anchoredPosition.x);
-        if(distanceToCenter < 0.000001f)
+        float distanceToCenter = Mathf.Abs(inputDetector.GetComponent<RectTransform>().anchoredPosition.x  - rect.anchoredPosition.x);
+        if(distanceToCenter < 1f)
         {
             inputDetector.foodTrans.Remove(gameObject);
             DestroyFood();

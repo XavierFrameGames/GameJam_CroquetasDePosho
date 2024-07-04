@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
 
 
 
-    public void SongInputUp(InputAction.CallbackContext callback)
+    /*public void SongInputUp(InputAction.CallbackContext callback)
     {
         //float value = input.actions["Button Up"].ReadValue<float>();
         //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
@@ -201,7 +201,9 @@ public class Player : MonoBehaviour
 
 
 
+
     }
+    */
     public void SongInputDown(InputAction.CallbackContext callback)
     {
         //float value = input.actions["Button Up"].ReadValue<float>();
