@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     public PlayableDirector timelineDirector;
 
 
+    [SerializeField] private GameObject pointsText;
+    public int points;
+
+
 
         private void Start()
         {
@@ -176,27 +180,40 @@ public class Player : MonoBehaviour
         //float value = input.actions["Button Up"].ReadValue<float>();
         //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
-        float distance = 1000000000000;
-        int posInList = 0;
-        for(int i = 0;i<inputDetector.foodTrans.Count;i++)
+        if (callback.performed)
         {
-            float tempdistance = inputDetector.gameObject.transform.position.x - inputDetector.foodTrans[i].transform.position.x;
-            
-            if(tempdistance < distance)
+            Debug.Log("botoonUp");
+            float distance = 1000000000000;
+            int posInList = 0;
+            for (int i = 0; i < inputDetector.foodTrans.Count; i++)
             {
-                distance = tempdistance;
-                posInList = i;
+                float tempdistance = Math.Abs(inputDetector.gameObject.GetComponent<RectTransform>().anchoredPosition.x -
+                    inputDetector.foodTrans[i].gameObject.GetComponent<RectTransform>().anchoredPosition.x);
+
+                if (tempdistance < distance)
+                {
+                    distance = tempdistance;
+                    posInList = i;
+                    Debug.Log(i);
+                }
+
+
+
             }
+            if (distance < 140 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput == 1)//mirar si es lo optimo
+            {
+                Debug.Log("Destroyy");
+                inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(); //añadir metodo del objeto para su destruccion en el propio script del objeto;  
 
+
+            }
+            else if (distance < 0.1 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput != 1)
+            {
+
+            }
             
-
         }
-        if(distance < 0.1 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput == 1)//mirar si es lo optimo
-        {
-            // inputDetector.foodTrans[posInList]. añadir metodo del objeto para su destruccion en el propio script del objeto;  
-            //Añadir puntuación
-
-        }
+        
 
 
 

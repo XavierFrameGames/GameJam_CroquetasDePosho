@@ -22,16 +22,17 @@ public class FoodBehaviour : MonoBehaviour
         float distanceToCenter = Mathf.Abs(inputDetector.GetComponent<RectTransform>().anchoredPosition.x  - rect.anchoredPosition.x);
         if(distanceToCenter < 1f)
         {
-            inputDetector.foodTrans.Remove(gameObject);
+            
             DestroyFood();
     
         }
     }
 
-    private void DestroyFood()
+    public void DestroyFood()
     {
+        inputDetector.foodTrans.Remove(gameObject);
         Destroy(gameObject);
-        //inputDetector.foodTrans.RemoveAt()  Detectar en que numero esta el rect para poderlo quitar
-       // Destroy();
+        
+       
     }
 }
