@@ -10,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -32,6 +32,11 @@ public class MainMenuManager : MonoBehaviour
     public void ButtonToSelect(Button butt)
     {
         butt.Select();
+    }
+
+    public void SelectSlider(Slider slid)
+    {
+        slid.Select();
     }
 
     public void LoadCharacterPanel(GameObject multiplayerManager)
