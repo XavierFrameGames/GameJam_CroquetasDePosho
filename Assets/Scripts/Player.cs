@@ -30,10 +30,13 @@ public class Player : MonoBehaviour
     public int points;
 
 
+    private LevelManager levelManager;
+
+
 
         private void Start()
         {
-        
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         timelineDirector = gameObject.transform.GetChild(0).transform.GetComponentInChildren<PlayableDirector>();
         input = GetComponent<PlayerInput>();
         inputDetector = gameObject.transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<InputDetector>();
@@ -173,6 +176,14 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void Pause(InputAction.CallbackContext callback)
+    {
+        
+        levelManager.PauseResume(playerIndex);
+        
+    }
+    
 
 
     private void ProcessInput(int correctinput)
