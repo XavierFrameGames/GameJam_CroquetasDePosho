@@ -8,10 +8,13 @@ public class FoodBehaviour : MonoBehaviour
     private RectTransform rect;
     [SerializeField] private float speed;
     [SerializeField] private InputDetector inputDetector;
+    private Vector2 initialPos;
     public int correctInput;
+
     void Start()
     {
         rect = GetComponent<RectTransform>();
+        initialPos = rect.anchoredPosition;
         inputDetector = transform.parent.GetComponent<InputDetector>();
         inputDetector.foodTrans.Add(gameObject);
     }
@@ -20,8 +23,9 @@ public class FoodBehaviour : MonoBehaviour
     void Update()
     {
         rect.Translate(Vector3.right * speed  * Time.deltaTime);
-        float distanceToCenter = Mathf.Abs(inputDetector.GetComponent<RectTransform>().anchoredPosition.x  - rect.anchoredPosition.x);
-        if(distanceToCenter < 1f)
+        float distanceToCenter = Mathf.Abs(initialPos.x  - rect.anchoredPosition.x);
+        float totalDistance = Mathf.Abs(inputDetector.GetComponent<RectTransform>().anchoredPosition.x  - initialPos.x);
+        if(distanceToCenter > (totalDistance - 1f))
         {
             
             DestroyFood(false);

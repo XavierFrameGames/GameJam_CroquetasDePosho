@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429e51aa85b44544ea1008dfa7b0d4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.5
   inputDetector: {fileID: 0}
   correctInput: 4
 --- !u!222 &4289219096545614247
