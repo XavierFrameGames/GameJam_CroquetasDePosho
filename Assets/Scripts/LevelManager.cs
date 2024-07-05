@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject pausepanel;
     [SerializeField] private GameObject optionsPanel;
     public bool playing;
+    [SerializeField] private AudioClip song;
     
     
 
@@ -65,7 +66,7 @@ public class LevelManager : MonoBehaviour
 
 
         }
-        AudioManager.Instance.audioSource.Play();
+        AudioManager.Instance.PlayMusic(song);
         
        
     }
@@ -79,7 +80,15 @@ public class LevelManager : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        //poner time scale a 1
+        Time.timeScale = 1.0f;
+        int count = GameManager.Instance.players.Count;
+        for (int i = 0; i < count; i++)
+        {
+            Destroy(GameManager.Instance.players[0].gameObject);
+            GameManager.Instance.players.RemoveAt(0);
+        }
+        GameManager.Instance.players = new List<Player>();
+        SceneManager.LoadScene(0);
     }
     public void OptionsPanel(bool inOptions)
     {
@@ -115,7 +124,7 @@ public class LevelManager : MonoBehaviour
                     GameManager.Instance.players[i].timelineDirector.Pause();
                 }
             }
-            //parar cancion audiomanager
+            AudioManager.Instance.PauseMusic();
             Time.timeScale = 0;
             pausepanel.SetActive(playing);
             pausepanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().Select();
@@ -137,7 +146,7 @@ public class LevelManager : MonoBehaviour
                     GameManager.Instance.players[i].timelineDirector.Resume();
                 }
             }
-            //reanudar panel audiomanager
+            AudioManager.Instance.ResumeMusic();
             pausepanel.SetActive(!playing);
             Time.timeScale = 1;
             playing = true;
