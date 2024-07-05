@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
     public PlayableDirector timelineDirector;
 
 
-    [SerializeField] private GameObject pointsText;
+    [SerializeField] private TextMeshProUGUI pointsText;
     public int points;
 
 
@@ -174,6 +175,56 @@ public class Player : MonoBehaviour
     }
 
 
+    private void ProcessInput(int correctinput)
+    {
+        
+        Debug.Log("botoonUp");
+        float distance = 1000000000000;
+        int posInList = 0;
+        for (int i = 0; i < inputDetector.foodTrans.Count; i++)
+        {
+            float tempdistance = Math.Abs(inputDetector.gameObject.GetComponent<RectTransform>().anchoredPosition.x -
+                inputDetector.foodTrans[i].gameObject.GetComponent<RectTransform>().anchoredPosition.x);
+
+            if (tempdistance < distance)
+            {
+                distance = tempdistance;
+                posInList = i;
+                Debug.Log(i);
+            }
+
+
+
+        }
+        if (distance < 140 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput == correctinput)//mirar si es lo optimo
+        {
+            Debug.Log("Destroyy");
+            inputDetector.foodTrans[posInList].GetComponent<Image>().color = Color.green;
+            inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(true); //añadir metodo del objeto para su destruccion en el propio script del objeto;  
+
+            int pointsToAdd = 0;
+            if (distance < 10) //rango PERFECT
+            {
+                pointsToAdd = 100;
+            }
+            else if (distance < 50) //rango GREAT
+            {
+                pointsToAdd = 50;
+            }
+            else if (distance >= 50) //rango OK
+            {
+                pointsToAdd = 15;
+            }
+            points += pointsToAdd;
+            pointsText.text = points.ToString();
+
+        }
+        else if (distance < 140 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput != correctinput)
+        {
+            inputDetector.foodTrans[posInList].GetComponent<Image>().color = Color.red;
+            inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(false);
+        }
+    }
 
     public void SongInputUp(InputAction.CallbackContext callback)
     {
@@ -182,35 +233,7 @@ public class Player : MonoBehaviour
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
         if (callback.performed)
         {
-            Debug.Log("botoonUp");
-            float distance = 1000000000000;
-            int posInList = 0;
-            for (int i = 0; i < inputDetector.foodTrans.Count; i++)
-            {
-                float tempdistance = Math.Abs(inputDetector.gameObject.GetComponent<RectTransform>().anchoredPosition.x -
-                    inputDetector.foodTrans[i].gameObject.GetComponent<RectTransform>().anchoredPosition.x);
-
-                if (tempdistance < distance)
-                {
-                    distance = tempdistance;
-                    posInList = i;
-                    Debug.Log(i);
-                }
-
-
-
-            }
-            if (distance < 140 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput == 1)//mirar si es lo optimo
-            {
-                Debug.Log("Destroyy");
-                inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(); //añadir metodo del objeto para su destruccion en el propio script del objeto;  
-
-
-            }
-            else if (distance < 0.1 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput != 1)
-            {
-
-            }
+            ProcessInput(1);
             
         }
         
@@ -227,7 +250,11 @@ public class Player : MonoBehaviour
         //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
 
+        if (callback.performed)
+        {
+            ProcessInput(2);
 
+        }
 
 
 
@@ -240,7 +267,11 @@ public class Player : MonoBehaviour
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
 
 
+        if (callback.performed)
+        {
+            ProcessInput(3);
 
+        }
 
 
 
@@ -251,7 +282,11 @@ public class Player : MonoBehaviour
         //Poner Inputs de los botones y comprobar que comida esta más cerca (inputdetector)
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
 
+        if (callback.performed)
+        {
+            ProcessInput(4);
 
+        }
 
 
 
@@ -264,7 +299,11 @@ public class Player : MonoBehaviour
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
 
 
+        if (callback.performed)
+        {
+            ProcessInput(5);
 
+        }
 
 
 
@@ -276,7 +315,11 @@ public class Player : MonoBehaviour
         //Detectar que tipo de comida es para ver si le das al boton correcto; /1-Up 2-Down 3-Left 4-Right 5-L 6-R
 
 
+        if (callback.performed)
+        {
+            ProcessInput(6);
 
+        }
 
 
 
