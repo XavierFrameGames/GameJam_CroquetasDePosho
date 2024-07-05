@@ -8,7 +8,8 @@ public class LevelManager : MonoBehaviour
 {
 
     [SerializeField] private PlayableAsset timeline;
-    [SerializeField] private GameObject countdown; 
+    [SerializeField] private GameObject countdown;
+    
 
 
     
@@ -25,7 +26,8 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator CountdownCoroutine()
     {
-        countdown.SetActive(true);
+        yield return null;  
+        countdown.SetActive(true);   
         countdown.GetComponentInChildren<TextMeshProUGUI>().text = string.Empty;  
         yield return new WaitForSeconds(1);
         countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
@@ -55,6 +57,8 @@ public class LevelManager : MonoBehaviour
 
 
         }
+        AudioManager.Instance.audioSource.Play();
+        
        
     }
 }
