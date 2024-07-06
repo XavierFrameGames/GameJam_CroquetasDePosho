@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.Playables;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,11 +18,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject countdown;
     [SerializeField] private GameObject pausepanel;
     [SerializeField] private GameObject optionsPanel;
+    [SerializeField] private GameObject rankingPanel;
+    [SerializeField] private TextMeshProUGUI rankingText;
     public bool playing;
     [SerializeField] private AudioClip song;
-    
-    
 
+
+    private IEnumerator finalCoroutine;
 
     
     void Start()
@@ -46,7 +49,110 @@ public class LevelManager : MonoBehaviour
     
     void Update()
     {
+       
+    }
+
+    IEnumerator FinalLevelCoroutine()
+    {
+        //Audiomanager.Instance.PlaySFX()Piiiiii
+        for(int i = 0; i < GameManager.Instance.players.Count;i++)
+        {
+            GameObject canvas = GameManager.Instance.players[i].gameObject.transform.GetChild(0).GetChild(2).gameObject;
+            for (int j = 0; j < canvas.transform.childCount; j++)
+            {
+                canvas.transform.GetChild(j).gameObject.SetActive(false);
+            }
+        }
+        yield return null;
+        // sfx tambores
+        countdown.SetActive(true);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = string.Empty;
+        yield return new WaitForSecondsRealtime(1);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
+       
+
+        yield return new WaitForSecondsRealtime(1);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "2";
         
+
+        yield return new WaitForSecondsRealtime(1);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "1";
+        
+
+        yield return new WaitForSecondsRealtime(1);
+        countdown.SetActive(false);
+
+        //AudioManager.Instance.PlaySFX(); confetti
+        List<Player> ordered = OrderPlayers();
+        rankingText.text = "";
+        for(int i = 0; i < ordered.Count; i++)
+        {
+            string skinName = "";
+            switch (ordered[i].playerSkin)
+            {
+                case 0:
+                    skinName = "Cavernícola";
+                    break;
+                case 1:
+                    skinName = "Chica";
+                    break;
+                case 2:
+                    skinName = "Chico";
+                    break;
+                case 3:
+                    skinName = "Robot";
+                    break;
+                default:
+                    break;
+            }
+            rankingText.text += (i + 1).ToString() + " " + skinName + ": " + ordered[i].points.ToString() + "\n";
+        }
+        
+        rankingPanel.SetActive(true);
+        
+
+
+
+
+        for (int i = 0; i < ordered.Count; i++)
+        {
+            //GameManager.Instance.players[i].GetComponent<Animator>().SetTrigger(); animacion dependiendo del orden
+            if (i == 0)
+            {
+                //Instantiate(food[2], spawnPoint.position, spawnPoint.rotation);   //food buena
+                //ordered[i].GetComponent<Animator>().SetTrigger("Victory");
+            }
+            else if (i == ordered.Count - 1)
+            {
+                //Instantiate(food[0], spawnPoint.position, spawnPoint.rotation);  //food mala
+                //ordered[i].GetComponent<Animator>().SetTrigger("Defeat");
+            }
+            else
+            {
+                //Instantiate(food[1], spawnPoint.position, spawnPoint.rotation);  //food media
+                //ordered[i].GetComponent<Animator>().SetTrigger("Defeat");
+            }
+        }
+        
+
+        //hacer un .Select() del boton del panel Ranking
+
+
+
+        
+      
+        
+
+    }
+
+    public void FinishLevel()
+    {
+        if (finalCoroutine != null)
+        {
+            StopCoroutine(finalCoroutine);
+        }
+        finalCoroutine = FinalLevelCoroutine();
+        StartCoroutine(finalCoroutine);
     }
 
     IEnumerator CountdownCoroutine(bool inPause)
@@ -217,6 +323,33 @@ public class LevelManager : MonoBehaviour
             StartCoroutine(CountdownCoroutine(true));
         
     }
+    
 
+    public List<Player> OrderPlayers()
+    {
+        List<Player> orderedPlayers = new List<Player>();
 
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
+        {
+            orderedPlayers.Add(GameManager.Instance.players[i]);
+        }
+        for (int i = 0; i < orderedPlayers.Count; i++)
+        {
+            for (int j = 0; j < orderedPlayers.Count; j++)
+            {
+                if (orderedPlayers[j].points < orderedPlayers[i].points)
+                {
+                    Player aux = orderedPlayers[j];
+                    orderedPlayers[j] = orderedPlayers[i];
+                    orderedPlayers[i] = aux;
+                }
+            }
+        }
+        for (int i = 0; i < orderedPlayers.Count; i++)
+        {
+            Debug.Log("Player " + orderedPlayers[i].playerIndex + ": " + orderedPlayers[i].points);
+        }
+
+        return orderedPlayers;
+    }
 }

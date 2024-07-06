@@ -28,12 +28,13 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] private TextMeshProUGUI pointsText;
+    [SerializeField] private TextMeshProUGUI skillText;
     public int points;
 
 
-   public LevelManager levelManager;
+    public LevelManager levelManager;
 
-
+    private IEnumerator corr;
 
         private void Start()
         {
@@ -68,6 +69,11 @@ public class Player : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    public void FinalLevel()
+    {
+        levelManager.FinishLevel();
     }
 
     public void OnDeviceLost(PlayerInput playerInput)
@@ -215,6 +221,11 @@ public class Player : MonoBehaviour
         }
         if (distance < 140 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput == correctinput)//mirar si es lo optimo
         {
+            if (corr != null)
+            {
+                StopCoroutine(corr);
+            }
+            skillText.faceColor = new Color(skillText.faceColor.r, skillText.faceColor.g, skillText.faceColor.b, 1);
             Debug.Log("Destroyy");
             inputDetector.foodTrans[posInList].GetComponent<Image>().color = Color.green;
             inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(true); //añadir metodo del objeto para su destruccion en el propio script del objeto;  
@@ -222,25 +233,61 @@ public class Player : MonoBehaviour
             int pointsToAdd = 0;
             if (distance < 10) //rango PERFECT
             {
+                skillText.faceColor = Color.cyan;
+                
+                skillText.text = "PERFECT!!!";
                 pointsToAdd = 100;
             }
             else if (distance < 50) //rango GREAT
             {
+                skillText.faceColor = new Color(0, 0.9f, 0.45f, 1);
+
+                skillText.text = "Great!";
                 pointsToAdd = 50;
             }
             else if (distance >= 50) //rango OK
             {
+                skillText.faceColor = Color.green;
+
+                skillText.text = "Ok...";
                 pointsToAdd = 15;
             }
             points += pointsToAdd;
             pointsText.text = points.ToString();
+            corr = FadeOutSkillCorutine();
+            StartCoroutine(corr);
 
         }
         else if (distance < 140 && inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().correctInput != correctinput)
         {
+            if (corr != null)
+            {
+                StopCoroutine(corr);
+            }
+            skillText.faceColor = new Color(skillText.faceColor.r, skillText.faceColor.g, skillText.faceColor.b, 1);
+            skillText.faceColor = Color.red;
+            
+            skillText.text = "Wrong!";
             inputDetector.foodTrans[posInList].GetComponent<Image>().color = Color.red;
             inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(false);
+            corr = FadeOutSkillCorutine();
+            StartCoroutine(corr);
         }
+    }
+    IEnumerator FadeOutSkillCorutine()
+    {
+        float duration = 0.13f;
+        float timePass = 0;
+        
+        yield return new WaitForSeconds(0.5f);
+        while (timePass < duration)
+        {
+            timePass += Time.deltaTime;
+            skillText.faceColor = new Color(skillText.faceColor.r, skillText.faceColor.g, skillText.faceColor.b, 1 - (timePass / duration));
+            yield return null;
+        }
+
+        skillText.faceColor = new Color(skillText.faceColor.r, skillText.faceColor.g, skillText.faceColor.b, 0);
     }
 
     public void ResetPoints()

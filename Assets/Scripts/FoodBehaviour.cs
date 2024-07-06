@@ -71,7 +71,7 @@ public class FoodBehaviour : MonoBehaviour
         while (timePass < duration)
         {
             timePass += Time.deltaTime;
-            img.fillAmount = 1 - (timePass / duration);
+            
             img.color = new Color(img.color.r, img.color.g, img.color.b, 1 - (timePass / duration));
             yield return null;
         }
