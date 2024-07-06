@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CustomMultiplayerManager : PlayerInputManager
 {
@@ -66,6 +67,11 @@ public class CustomMultiplayerManager : PlayerInputManager
 
         playerInput.transform.position = characterLocations[character].position;
         playerInput.transform.rotation = characterLocations[character].rotation;
+
+        if(SceneManager.GetActiveScene().buildIndex>=2)
+        {
+            playerInput.GetComponent<Player>().levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        }
     }
 }
 

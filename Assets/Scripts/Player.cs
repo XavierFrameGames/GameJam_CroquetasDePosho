@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
 
     private bool scrolled;
 
-    [SerializeField] private InputDetector inputDetector;
+    public InputDetector inputDetector;
 
     public PlayableDirector timelineDirector;
 
@@ -30,13 +31,18 @@ public class Player : MonoBehaviour
     public int points;
 
 
-    private LevelManager levelManager;
+   public LevelManager levelManager;
 
 
 
         private void Start()
         {
-        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+       
+        
+            
+        
+            
+      
         timelineDirector = gameObject.transform.GetChild(0).transform.GetComponentInChildren<PlayableDirector>();
         input = GetComponent<PlayerInput>();
         inputDetector = gameObject.transform.GetChild(0).transform.GetChild(2).GetComponentInChildren<InputDetector>();
@@ -180,7 +186,7 @@ public class Player : MonoBehaviour
     public void Pause(InputAction.CallbackContext callback)
     {
         
-        levelManager.PauseResume(playerIndex);
+        levelManager.Pause(playerIndex);
         
     }
     
@@ -189,7 +195,7 @@ public class Player : MonoBehaviour
     private void ProcessInput(int correctinput)
     {
         
-        Debug.Log("botoonUp");
+        
         float distance = 1000000000000;
         int posInList = 0;
         for (int i = 0; i < inputDetector.foodTrans.Count; i++)
@@ -236,6 +242,13 @@ public class Player : MonoBehaviour
             inputDetector.foodTrans[posInList].GetComponent<FoodBehaviour>().DestroyFood(false);
         }
     }
+
+    public void ResetPoints()
+    {
+        points = 0;
+        pointsText.text = points.ToString();
+    }
+
 
     public void SongInputUp(InputAction.CallbackContext callback)
     {
