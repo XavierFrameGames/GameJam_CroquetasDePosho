@@ -15,7 +15,7 @@ public class SelectCharacterManager : MonoBehaviour
     [SerializeField]
     private bool[] playersReady;
     [SerializeField]
-    private List<List<GameObject>> charactersUI; //seran Animators en el futuro
+    private List<GameObject> charactersUI; //seran Animators en el futuro
 
     [SerializeField]
     private int maxCharacters;
@@ -76,6 +76,17 @@ public class SelectCharacterManager : MonoBehaviour
         renderCameras[playerIndex].eulerAngles += Vector3.up * 90 * rotateDirection;
     }
 
+    public void ActivateAnimation(int playerIndex)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetTrigger("Animate");
+            charactersUI[playerIndex].transform.GetChild(i).GetComponent<ObjectsForAnimation>().objectt.SetActive(true);
+        }
+        
+            
+    }
+    
     public bool SelectCharacter(int playerIndex)
     {
         int selected = selectedCharsIndexes[playerIndex];
@@ -92,7 +103,7 @@ public class SelectCharacterManager : MonoBehaviour
 
         //trigger character animation
 
-        //charactersUI[playerIndex][selectedCharsIndexes[playerIndex]].SetTrigger("Animate");
+        
         playersReady[playerIndex] = true;
 
         int numPlayers = 4;
@@ -118,6 +129,12 @@ public class SelectCharacterManager : MonoBehaviour
     public void DeselectCharacter(int playerIndex)
     {
         playersReady[playerIndex] = false;
+        for (int i = 0; i < 4; i++)
+        {
+            charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetTrigger("DesAnimate");
+            charactersUI[playerIndex].transform.GetChild(i).GetComponent<ObjectsForAnimation>().objectt.SetActive(false);
+        }
+        
         allSelected.SetActive(false);
     }
 
@@ -125,7 +142,7 @@ public class SelectCharacterManager : MonoBehaviour
     {
         if (panelSelectSong.activeInHierarchy)
         {
-            //lo que haremos ahora
+            
             playersReady = new bool[4];
             for (int i = 0; i < GameManager.Instance.players.Count; i++)
             {
@@ -189,9 +206,19 @@ public class SelectCharacterManager : MonoBehaviour
                 return false;
             }
         }
+        for (int i = 0; i < 4; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetTrigger("DesAnimate");
+                charactersUI[i].transform.GetChild(j).GetComponent<ObjectsForAnimation>().objectt.SetActive(false);
+            }
+        }
+            
         //todos ready. Go to Select Nivel
         multiplayerManagers[0].transform.parent.gameObject.SetActive(false);
         panelSelectSong.SetActive(true);
+        allSelected.SetActive(false);
         panelSelectSong.transform.GetChild(0).GetComponent<Button>().Select();
         panelSelectSong.transform.GetChild(1).GetComponent<Button>().interactable = GameManager.Instance.tutorialDone;
         panelSelectSong.transform.GetChild(2).GetComponent<Button>().interactable = GameManager.Instance.tutorialDone;

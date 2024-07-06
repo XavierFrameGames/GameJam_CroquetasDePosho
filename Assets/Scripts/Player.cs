@@ -116,6 +116,7 @@ public class Player : MonoBehaviour
             bool successful = selectCharacterManager.SelectCharacter(playerIndex); //should I get the return value?
             if (successful)
             {
+                selectCharacterManager.ActivateAnimation(playerIndex);
                 playerSkin = selectCharacterManager.selectedCharsIndexes[playerIndex];
                 DisableActions(new string[] { "Scroll Characters", "Select Character" });
                 EnableActions(new string[] { "Cancel Character" });
