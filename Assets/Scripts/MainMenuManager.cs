@@ -7,10 +7,15 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
+    private AudioManager aM;
+    [SerializeField] private AudioClip selectSFX, choseSFX, musicTheme;
+
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
+        aM = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        aM.PlayMusic(musicTheme);
     }
 
     // Update is called once per frame
@@ -66,5 +71,15 @@ public class MainMenuManager : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void UISelect()
+    {
+        aM.PlayUISound(selectSFX);
+    }
+
+    public void UIChosen()
+    {
+        aM.PlayUISound(choseSFX);
     }
 }

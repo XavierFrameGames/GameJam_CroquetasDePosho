@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;    
     public AudioSource musicSource;
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
 
     public AudioSource[] sfxSource;
     public AudioSource[] uiSource;
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        audioSource = musicSource;
+        //audioSource = musicSource;
         sfxSource = new AudioSource[8]; //2 per player?
         for (int i = 0; i < sfxSource.Length; i++)
         {

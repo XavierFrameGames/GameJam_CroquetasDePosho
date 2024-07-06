@@ -20,6 +20,8 @@ public class SelectCharacterManager : MonoBehaviour
     [SerializeField]
     private int maxCharacters;
 
+    [SerializeField] private GameObject allSelected;
+
     [SerializeField]
     private GameObject[] multiplayerManagers;
     [SerializeField]
@@ -92,12 +94,31 @@ public class SelectCharacterManager : MonoBehaviour
 
         //charactersUI[playerIndex][selectedCharsIndexes[playerIndex]].SetTrigger("Animate");
         playersReady[playerIndex] = true;
+
+        int numPlayers = 4;
+        for (int i = 0; i < multiplayerManagers.Length; i++)
+        {
+            if (multiplayerManagers[i].activeInHierarchy)
+            {
+                numPlayers = multiplayerManagers[i].GetComponent<CustomMultiplayerManager>().maxPlayerCount;
+            }
+        }
+        for (int i = 0; i < numPlayers; i++) //esto solia ser i < playersReady.Length
+        {
+            if (!playersReady[i])
+            {
+                //opcional, sonido de error
+                return true;
+            }
+        }
+        allSelected.SetActive(true);
         return true;
     }
 
     public void DeselectCharacter(int playerIndex)
     {
         playersReady[playerIndex] = false;
+        allSelected.SetActive(false);
     }
 
     public bool Back()
