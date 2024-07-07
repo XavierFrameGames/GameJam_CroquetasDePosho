@@ -68,6 +68,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + level);
     }
 
+    public void ReturnScene1()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void Exit()
     {
         Application.Quit();
