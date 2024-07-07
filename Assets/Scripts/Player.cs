@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -397,5 +398,12 @@ public class Player : MonoBehaviour
 
 
 
+    }
+
+
+    public void RandomIntAnimation()
+    {
+        int random = UnityEngine.Random.Range(0, 2);
+        scenes[playerSkin].transform.GetChild(0).GetComponent<Animator>().SetInteger("inGame", random);
     }
 }

@@ -3138,9 +3138,9 @@ MonoBehaviour:
   rankingPanel: {fileID: 940184256}
   rankingText: {fileID: 1238816874}
   food:
-  - {fileID: 1661344265101169951, guid: 8c08d06afaf95a5438507f83a79a9c81, type: 3}
-  - {fileID: 3888386800256028366, guid: e4368363465fa6e48920a77fa1a04d1f, type: 3}
-  - {fileID: 5831584214806929152, guid: 57579cd1460a9d94a8477c67c06c8b33, type: 3}
+  - {fileID: 9141420476573692164, guid: 9d90084e3a9c59b4196ec6b7d0ec3a59, type: 3}
+  - {fileID: 5692936509766767698, guid: 1a37e3a343afe514ba1acadf9f10835b, type: 3}
+  - {fileID: 1681609756032099447, guid: ca4b64a47559fad40a959999b76f67ac, type: 3}
   playing: 0
   song: {fileID: 8300000, guid: 9c834f2ffc203fa4e8452cee21346993, type: 3}
 --- !u!1 &1954069690
