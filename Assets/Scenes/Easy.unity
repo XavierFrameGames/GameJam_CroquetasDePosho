@@ -1252,9 +1252,9 @@ MonoBehaviour:
   rankingPanel: {fileID: 2137192051}
   rankingText: {fileID: 2137192050}
   food:
-  - {fileID: 9141420476573692164, guid: 9d90084e3a9c59b4196ec6b7d0ec3a59, type: 3}
-  - {fileID: 5692936509766767698, guid: 1a37e3a343afe514ba1acadf9f10835b, type: 3}
-  - {fileID: 1681609756032099447, guid: ca4b64a47559fad40a959999b76f67ac, type: 3}
+  - {fileID: 4859570359367089063, guid: 8973e240a890146439858d89d4ca09e1, type: 3}
+  - {fileID: 7008056651450068281, guid: c1cecd442468d1b4ebf27b004d098934, type: 3}
+  - {fileID: 780906836489772336, guid: 384d5c423a105c7468b8d712ccb5b9d5, type: 3}
   playing: 0
   song: {fileID: 8300000, guid: 9c834f2ffc203fa4e8452cee21346993, type: 3}
   globalEventSystem: {fileID: 492949496}

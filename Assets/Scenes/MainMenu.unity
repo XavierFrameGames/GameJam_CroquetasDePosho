@@ -7612,7 +7612,7 @@ MonoBehaviour:
   options:
     musicVolume: 1
     sfxVolume: 1
-  tutorialDone: 1
+  tutorialDone: 0
 --- !u!4 &1707802515
 Transform:
   m_ObjectHideFlags: 0

@@ -266,7 +266,7 @@ public class LevelManager : MonoBehaviour
             canvas.transform.GetChild(12).gameObject.SetActive(false);
             canvas.transform.GetChild(13).gameObject.SetActive(false);
         }
-
+        AudioManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
 
         

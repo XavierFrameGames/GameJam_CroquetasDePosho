@@ -68,6 +68,10 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = GameManager.Instance.options.MusicVolume;
         musicSource.UnPause();
     }
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
 
     public void PlayUISound(AudioClip clip)
     {
