@@ -1559,6 +1559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalRanking
       objectReference: {fileID: 0}
+    - target: {fileID: 4653721223238511643, guid: 7c176a40d477bdc4e8c8c4e5297c73a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5462478132159436488, guid: 7c176a40d477bdc4e8c8c4e5297c73a9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1816,6 +1821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592637975271173669, guid: 9183a59261a0b38408f4296652b92360,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
