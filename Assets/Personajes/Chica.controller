@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8787479680201428174, guid: cd1160adf4985dd4e82be1d40ed72d26,
+  m_Motion: {fileID: 5308966991250139529, guid: ab1d9e2606d7b4842a3e9426f2bc838a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -190,7 +190,7 @@ AnimatorController:
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Victory
     m_Type: 9

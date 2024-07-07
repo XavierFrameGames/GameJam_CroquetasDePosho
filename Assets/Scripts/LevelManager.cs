@@ -311,7 +311,7 @@ public class LevelManager : MonoBehaviour
             Time.timeScale = 0;
             pausepanel.SetActive(true);
             
-            Button butt = pausepanel.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Button>();
+            Button butt = pausepanel.transform.GetChild(0).gameObject.GetComponent<Button>();
             GameManager.Instance.players[player].GetComponent<MultiplayerEventSystem>().playerRoot = pausepanel.transform.parent.gameObject;
             GameManager.Instance.players[player].GetComponent<EventSystem>().SetSelectedGameObject(butt.gameObject);
             EventSystem.current = GameManager.Instance.players[player].GetComponent<EventSystem>();
