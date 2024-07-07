@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
@@ -400,7 +401,14 @@ public class Player : MonoBehaviour
 
     }
 
-
+    public void Playing()
+    {
+        scenes[playerSkin].transform.GetChild(0).GetComponent<Animator>().SetBool("Playing", true);
+    }
+    public void isNotPlaying()
+    {
+        scenes[playerSkin].transform.GetChild(0).GetComponent<Animator>().SetBool("Playing", false);
+    }
     public void RandomIntAnimation()
     {
         int random = UnityEngine.Random.Range(0, 2);

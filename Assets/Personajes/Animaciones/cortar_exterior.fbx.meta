@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 955a0107f1d41e044bbd649dc932a1bc
+guid: 56e657863e4cb1c43a960ae2377c1fe1
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -23,7 +23,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: remover_en_olla
-      takeName: remover_en_olla
-      internalID: 6184288756387355404
-      firstFrame: 400
-      lastFrame: 475
+      name: cortar_exterior
+      takeName: cortar_exterior
+      internalID: -224544636320868085
+      firstFrame: 491
+      lastFrame: 531
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,12 +62,12 @@ ModelImporter:
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 2
+        intParameter: 1
         messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 400
+      additiveReferencePoseFrame: 491
     isReadable: 0
   meshes:
     lODScreenPercentages: []

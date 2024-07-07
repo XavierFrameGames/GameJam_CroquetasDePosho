@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObjectsForAnimation : MonoBehaviour
 {
     public GameObject objectt;
+    public GameObject[] objectts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,22 @@ public class ObjectsForAnimation : MonoBehaviour
         else
         {
             objectt.SetActive(false);
+        }
+    }
+
+    public void ActivateOneObject(int activate)
+    {
+        for (int i = 0; i < objectts.Length; i++)
+        {
+            objectts[i].SetActive(false);
+        }
+        if (activate == 0)
+        {
+            return;
+        }
+        else
+        {
+            objectts[activate - 1].SetActive(true);
         }
     }
 }

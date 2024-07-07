@@ -80,7 +80,8 @@ public class SelectCharacterManager : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetTrigger("Animate");
+            //charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetTrigger("Animate");
+            charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetBool("Idle", true);
             charactersUI[playerIndex].transform.GetChild(i).GetComponent<ObjectsForAnimation>().objectt.SetActive(true);
         }
         
@@ -131,7 +132,8 @@ public class SelectCharacterManager : MonoBehaviour
         playersReady[playerIndex] = false;
         for (int i = 0; i < 4; i++)
         {
-            charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetTrigger("DesAnimate");
+            //charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetTrigger("DesAnimate");
+            charactersUI[playerIndex].transform.GetChild(i).GetComponent<Animator>().SetBool("Idle", false);
             charactersUI[playerIndex].transform.GetChild(i).GetComponent<ObjectsForAnimation>().objectt.SetActive(false);
         }
         
@@ -146,6 +148,12 @@ public class SelectCharacterManager : MonoBehaviour
             playersReady = new bool[4];
             for (int i = 0; i < GameManager.Instance.players.Count; i++)
             {
+                for (int j = 0; j < 4; j++)
+                {
+                    //charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetTrigger("DesAnimate");
+                    charactersUI[i].transform.GetChild(i).GetComponent<Animator>().SetBool("Idle", false);
+                    charactersUI[i].transform.GetChild(j).GetComponent<ObjectsForAnimation>().objectt.SetActive(false);
+                }
                 GameManager.Instance.players[i].ResetCharacterSelection();
             }
 
@@ -164,6 +172,12 @@ public class SelectCharacterManager : MonoBehaviour
             int count = GameManager.Instance.players.Count;
             for (int i = 0; i < count; i++)
             {
+                for (int j = 0; j < 4; j++)
+                {
+                    //charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetTrigger("DesAnimate");
+                    charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetBool("Idle", false);
+                    charactersUI[i].transform.GetChild(j).GetComponent<ObjectsForAnimation>().objectt.SetActive(false);
+                }
                 Destroy(GameManager.Instance.players[0].gameObject);
                 GameManager.Instance.players.RemoveAt(0);
             }
@@ -181,7 +195,7 @@ public class SelectCharacterManager : MonoBehaviour
 
             multiplayerManagers[0].transform.parent.gameObject.SetActive(false);
             panel2P4P.SetActive(true);
-            panel2P4P.transform.GetChild(0).GetComponent<Button>().Select();
+            panel2P4P.transform.GetChild(3).GetComponent<Button>().Select();
             return true;
         }
     }
@@ -210,7 +224,8 @@ public class SelectCharacterManager : MonoBehaviour
         {
             for(int j = 0; j < 4; j++)
             {
-                charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetTrigger("DesAnimate");
+                //charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetTrigger("DesAnimate");
+                charactersUI[i].transform.GetChild(j).GetComponent<Animator>().SetBool("Idle", false);
                 charactersUI[i].transform.GetChild(j).GetComponent<ObjectsForAnimation>().objectt.SetActive(false);
             }
         }

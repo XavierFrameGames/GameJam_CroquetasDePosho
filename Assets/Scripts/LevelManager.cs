@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] food;
     public bool playing;
     [SerializeField] private AudioClip song;
+    [SerializeField] private EventSystem globalEventSystem;
 
 
     private IEnumerator finalCoroutine;
@@ -142,7 +143,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-
+        EventSystem.current = globalEventSystem;
         rankingPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>().Select();
 
 
@@ -247,7 +248,27 @@ public class LevelManager : MonoBehaviour
     public void Retry()
     {
         Time.timeScale = 1.0f;
+        for (int i = 0; i < GameManager.Instance.players.Count; i++)
+        {
+            GameObject canvas = GameManager.Instance.players[i].gameObject.transform.GetChild(0).GetChild(2).gameObject;
+            for (int j = 0; j < canvas.transform.childCount; j++)
+            {
+                canvas.transform.GetChild(j).gameObject.SetActive(true);
+            }
+            canvas.transform.GetChild(4).gameObject.SetActive(false);
+            canvas.transform.GetChild(5).gameObject.SetActive(false);
+            canvas.transform.GetChild(6).gameObject.SetActive(false);
+            canvas.transform.GetChild(7).gameObject.SetActive(false);
+            canvas.transform.GetChild(8).gameObject.SetActive(false);
+            canvas.transform.GetChild(9).gameObject.SetActive(false);
+            canvas.transform.GetChild(10).gameObject.SetActive(false);
+            canvas.transform.GetChild(11).gameObject.SetActive(false);
+            canvas.transform.GetChild(12).gameObject.SetActive(false);
+            canvas.transform.GetChild(13).gameObject.SetActive(false);
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+
         
 
 

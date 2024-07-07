@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FoodCreation : MonoBehaviour
 {
   
     [SerializeField] public  GameObject[] foodList;
     [SerializeField] private Transform currentPart;
+    [SerializeField] private Transform[] initialParts;
     [SerializeField] private Transform[] spawnPoint;
     [SerializeField] private InputDetector inputDetector;
     [SerializeField] private int spawnList;
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        int part = SceneManager.GetActiveScene().buildIndex - 2;
+        currentPart = initialParts[part];
     }
     private void OnEnable()
     {

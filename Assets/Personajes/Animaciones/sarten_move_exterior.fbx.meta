@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad282f2659e3c864fb99e944175be78c
+guid: dd01ef152bad12b48b190fd84c38eb57
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -23,7 +23,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 1
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: cortar
-      takeName: cortar
-      internalID: -4300096306463141670
-      firstFrame: 491
-      lastFrame: 531
+      name: sarten_move_exterior
+      takeName: sarten_move_exterior
+      internalID: -3403302106633955013
+      firstFrame: 1100
+      lastFrame: 1239
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -56,11 +56,18 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: ActivateOneObject
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 3
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 491
+      additiveReferencePoseFrame: 1100
     isReadable: 0
   meshes:
     lODScreenPercentages: []
