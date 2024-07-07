@@ -271,16 +271,19 @@ public class LevelManager : MonoBehaviour
         {
             optionsPanel.SetActive(false);
             pausepanel.SetActive(true);
-            pausepanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().Select();
+            pausepanel.transform.GetChild(0).gameObject.GetComponent<Button>().Select();
         }
         else
         {
-            
             pausepanel.SetActive(false);
             optionsPanel.SetActive(true);
-            optionsPanel.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Button>().Select();
+            //optionsPanel.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<Button>().Select();
         }
+    }
 
+    public void SelectSlider(Slider slid)
+    {
+        slid.Select();
     }
 
 
