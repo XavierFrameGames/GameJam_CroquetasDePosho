@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject rankingPanel;
     [SerializeField] private TextMeshProUGUI rankingText;
+    [SerializeField] private GameObject[] food;
     public bool playing;
     [SerializeField] private AudioClip song;
 
@@ -116,26 +117,33 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < ordered.Count; i++)
         {
-            //GameManager.Instance.players[i].GetComponent<Animator>().SetTrigger(); animacion dependiendo del orden
+            
+            Debug.Log("Entered for ordered");
             if (i == 0)
             {
-                //Instantiate(food[2], spawnPoint.position, spawnPoint.rotation);   //food buena
-                //ordered[i].GetComponent<Animator>().SetTrigger("Victory");
+                GameObject finalfood = Instantiate(food[2], ordered[i].finalFoodTrans[ordered[i].playerSkin].position, 
+                    ordered[i].finalFoodTrans[ordered[i].playerSkin].rotation);   //food buena
+                ordered[i].scenes[ordered[i].playerSkin].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Victory");
+                Debug.Log("Entered and victory");
             }
             else if (i == ordered.Count - 1)
             {
-                //Instantiate(food[0], spawnPoint.position, spawnPoint.rotation);  //food mala
-                //ordered[i].GetComponent<Animator>().SetTrigger("Defeat");
+                GameObject finalfood = Instantiate(food[0], ordered[i].finalFoodTrans[ordered[i].playerSkin].position,
+                  ordered[i].finalFoodTrans[ordered[i].playerSkin].rotation);  //food mala
+                ordered[i].scenes[ordered[i].playerSkin].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Defeat");
+                Debug.Log("Entered and def");
             }
             else
             {
-                //Instantiate(food[1], spawnPoint.position, spawnPoint.rotation);  //food media
-                //ordered[i].GetComponent<Animator>().SetTrigger("Defeat");
+                GameObject finalfood = Instantiate(food[1], ordered[i].finalFoodTrans[ordered[i].playerSkin].position,
+                  ordered[i].finalFoodTrans[ordered[i].playerSkin].rotation);   //food media
+                ordered[i].scenes[ordered[i].playerSkin].transform.GetChild(0).GetComponent<Animator>().SetTrigger("Defeat");
+                Debug.Log("Entered and def");
             }
         }
-        
 
-        //hacer un .Select() del boton del panel Ranking
+
+        rankingPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>().Select();
 
 
 

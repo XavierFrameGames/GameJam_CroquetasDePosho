@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public int playerIndex;
     //public InputDevice device;
     private SelectCharacterManager selectCharacterManager;
+    public GameObject[] scenes;
+    public Transform[] finalFoodTrans;
     private PlayerInput input;
 
     //[SerializeField]

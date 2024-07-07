@@ -15,6 +15,8 @@ public class CustomMultiplayerManager : PlayerInputManager
     private GameObject[] playerPanels;
     [SerializeField]
     private Transform[] characterLocations;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +72,9 @@ public class CustomMultiplayerManager : PlayerInputManager
 
         if(SceneManager.GetActiveScene().buildIndex>=2)
         {
+          
             playerInput.GetComponent<Player>().levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+            playerInput.GetComponent<Player>().scenes[character].SetActive(true);
         }
     }
 }
